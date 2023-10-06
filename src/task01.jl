@@ -10,9 +10,6 @@ function getdigits(a)
     return vec[end:-1:1];
 end
 
-a=12345
-getdigits(a)
-
 function touppercase(str_)
     vec = [];
     for x in str_ #идем по всем элементам строки
@@ -25,9 +22,6 @@ function touppercase(str_)
     return join(vec); #получаем вектор из элементов и соединяем его join
 end
 
-str_= "dasha1"
-touppercase(str_)
-
 function firstnorm(vec_::AbstractVector{<:Number}) #первая норма вектора - сумма модулей всех его элементов
     n1 = 0;
     for n in vec_
@@ -36,10 +30,6 @@ function firstnorm(vec_::AbstractVector{<:Number}) #первая норма ве
     return n1;
 end
 
-vec_=(1:8)
-firstnorm(vec_)
-
-
 function secondnorm(vec_::AbstractVector{<:Number}) #вторая норма вектора - корень суммы квадратов всех его элементов
     n2 = 0;
     for n in vec_
@@ -47,9 +37,6 @@ function secondnorm(vec_::AbstractVector{<:Number}) #вторая норма в�
     end
     return sqrt(n2);
 end
-
-vec_=(1:8)
-secondnorm(vec_)
 
 function infnorm(vec_::AbstractVector{<:Number}) #третья норма вектора - максимальный элемент
     n3 = 0;
@@ -61,10 +48,8 @@ function infnorm(vec_::AbstractVector{<:Number}) #третья норма век
     return n3;
 end
 
-infnorm(vec_)
-
 #максимум по сумме столбцов
-function firstnorm(vec_::AbstractMatrix{<:Number})
+function firstnorm(mat_::AbstractMatrix{<:Number})
     nA1 = 0;
     for col in eachcol(mat_)
         x = 0
@@ -76,11 +61,8 @@ function firstnorm(vec_::AbstractMatrix{<:Number})
     return nA1;
 end
 
-mat_= [1 2 3; 4 5 6]
-firstnorm(mat_)
-
 #максимум по сумме строк
-function infnorm(vec_::AbstractMatrix{<:Number})
+function infnorm(mat_::AbstractMatrix{<:Number})
     nA = 0;
     for col in eachrow(mat_)
         x = 0
@@ -92,23 +74,18 @@ function infnorm(vec_::AbstractMatrix{<:Number})
     return nA;
 end
 
-infnorm(mat_)
-
 #год високосный, если он делится на 4 без остатка, но если
 # он делится на 100 без остатка, то он не високосный, если же делится на 400, то он високосный
 function isleap(year)
-    if (year % 4) == 0
+    if (year % 400) == 0
         return true;
     elseif (year % 100) == 0
         return false
-    elseif (year % 400) == 0
+    elseif (year % 4) == 0
         return true
     end
     return false;
 end
-
-year = 2023
-isleap(year)
 
 function chesscolor(cell1, cell2)
     a = cell1[1] - 'a' + 1;
@@ -122,13 +99,3 @@ function chesscolor(cell1, cell2)
     end
     return false; 
 end
-
-cell1 = ['a',1]
-cell2 = ['f',6]
-chesscolor(cell1, cell2)
-
-'f'-'a'+1
-'f' #номер юникода в Hex
-
-cell1 = ['f',1]
-cell1[1] - 'a' + 1
