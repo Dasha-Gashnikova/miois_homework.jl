@@ -25,9 +25,9 @@ end
 function firstnorm(vec_::AbstractVector{<:Number}) #первая норма вектора - сумма модулей всех его элементов
     n1 = 0;
     for n in vec_
-        n1 += abs(n);
+        n1 += abs(n); #модуль
     end
-    return n1;
+    return n1; 
 end
 
 function secondnorm(vec_::AbstractVector{<:Number}) #вторая норма вектора - корень суммы квадратов всех его элементов
